@@ -32,14 +32,14 @@ This repository is one of the 32 workloads in the NVIDIA Ubuntu 26.04 bundle, [`
 apt-get update && apt-get install -y git
 git clone --recurse-submodules https://github.com/garys-gpu-benchmarks/bundle-nvidia-ubuntu-2604 /opt/benchmarks \
   && cd /opt/benchmarks \
-  && ./run.sh list \
+  && ./run_benchmark_suite.sh --list \
   && cd /opt/benchmarks/417-gpu-bench-nvidia-gemm-cublas-micro-ubu2604 \
   && bash run_benchmark.sh --profile smoke --validate \
   && cd /opt/benchmarks \
   && echo "Done: 32 workloads in /opt/benchmarks; 417-gpu-bench-nvidia-gemm-cublas-micro-ubu2604 smoke run passed. Next: ./run_benchmark_suite.sh --help"
 ```
 
-Every line in `./run.sh list` should show `ready`. The commands are joined with `&&`, so if the clone or the smoke run fails, the chain stops there, and the closing message appears only when everything succeeded. The chain ends in `/opt/benchmarks`, where the suite runner is. For more extensive testing:
+Every line in `./run_benchmark_suite.sh --list` should show `ready`; it exits with an error if any workload is not fetched. The commands are joined with `&&`, so if the clone, the list or the smoke run fails, the chain stops there, and the closing message appears only when everything succeeded. The chain ends in `/opt/benchmarks`, where the suite runner is. For more extensive testing:
 
 ```bash
 ./run_benchmark_suite.sh -p smoke                 # smoke test of all 32 workloads
@@ -73,8 +73,8 @@ Three operator scripts from [`garys-gpu-benchmarks/gpu-bench-suite`](https://git
 - **`get_remote_info.sh`** (on your laptop; Git Bash on Windows) — over one SSH connection, copies the runtime ledger and every workload's `results/raw`, `results/parsed` and suite logs into `RUNTIME_LEDGERS/` and `DIRECTORIES/`.
   ```bash
   git clone https://github.com/garys-gpu-benchmarks/gpu-bench-suite && cd gpu-bench-suite
-  ./scripts/get_remote_info.sh 203.0.113.10                     # root@host, port 22
-  ./scripts/get_remote_info.sh -i ~/.ssh/id_ed25519 -o ~/results ubuntu@203.0.113.10 2222
+  ./scripts/get_remote_info.sh --host 203.0.113.10              # root@host, port 22
+  ./scripts/get_remote_info.sh --host ubuntu@203.0.113.10 --port 2222 -i ~/.ssh/id_ed25519 -o ~/results
   ```
 - **`show_metrics.sh`** (laptop or GPU host) — prints one workload's runs from the runtime ledger in fixed-width metric columns with per-profile means. On the GPU host it is `/opt/benchmarks/show_metrics.sh`.
   ```bash
@@ -90,7 +90,7 @@ Builds src/cublas_gemm.cu into bin/cublas_gemm and times C = alphaAB + betaC via
 ## 2. What It Validates
 
 - Validates cuBLAS GEMM TFLOPS, kernel time, bandwidth, and optional norm errors from bin/cublas_gemm
-- #1: Achieved compute throughput (achieved_compute_tflops); is present and physically sensible.
+- #1: Achieved compute throughput, TFLOP/s (achieved_compute_tflops); is present and physically sensible.
 - #2: Kernel execution time (kernel_time_msec); is present and physically sensible.
 - #3: Minimum operand traffic, GB/s (minimum_operand_traffic_gb_s); is present and physically sensible.
 - #4: Relative L1 of checked columns (relative_l1_checked_columns); is present and physically sensible.
@@ -98,7 +98,7 @@ Builds src/cublas_gemm.cu into bin/cublas_gemm and times C = alphaAB + betaC via
 
 ## 3. Metrics Captured
 
-- **#1: Achieved compute throughput** — stored as `achieved_compute_tflops`.
+- **#1: Achieved compute throughput, TFLOP/s** — stored as `achieved_compute_tflops`.
 - **#2: Kernel execution time** — stored as `kernel_time_msec`.
 - **#3: Minimum operand traffic, GB/s** — stored as `minimum_operand_traffic_gb_s`.
 - **#4: Relative L1 of checked columns** — stored as `relative_l1_checked_columns`.
@@ -132,7 +132,7 @@ Ubuntu 26.04 / NVIDIA / Bash, SQLite, Python, PyYAML, CUDA Runtime, NVCC, cuBLAS
 | OS | Ubuntu 26.04 |
 | Kernel | kernel 7.0.0 |
 | Python | Python 3.14.4 |
-| ROCm | CUDA 13.3 |
+| ROCm | CUDA 13.3 (nvcc 13.3.73). Driver 580.159.04 reports CUDA 13.0 |
 | rocBLAS | cuBLAS (bundled with CUDA 13.3) |
 
 Builds src/cublas_gemm.cu into bin/cublas_gemm and times C = alphaAB + betaC via cuBLAS. function, dtype (default f32_r), M/N/K, transposeA/B, alpha/beta, lda/ldb/ldc, batch_count, warmup_iters, num_iterations, and norm_check come from yaml. Collector runs the harness twice and writes pass1, pass2, and summary CSV rows.
