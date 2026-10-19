@@ -94,7 +94,7 @@ Builds src/cublas_gemm.cu into bin/cublas_gemm and times C = alphaAB + betaC via
 - #2: Kernel execution time (kernel_time_msec); is present and physically sensible.
 - #3: Minimum operand traffic, GB/s (minimum_operand_traffic_gb_s); is present and physically sensible.
 - #4: Relative L1 of checked columns (relative_l1_checked_columns); is present and physically sensible.
-- #5: L2 norm error (norm_error_2) is present and physically sensible.
+- #5: Relative L2 error of checked columns (norm_error_2) is present and physically sensible.
 
 ## 3. Metrics Captured
 
@@ -102,7 +102,7 @@ Builds src/cublas_gemm.cu into bin/cublas_gemm and times C = alphaAB + betaC via
 - **#2: Kernel execution time** — stored as `kernel_time_msec`.
 - **#3: Minimum operand traffic, GB/s** — stored as `minimum_operand_traffic_gb_s`.
 - **#4: Relative L1 of checked columns** — stored as `relative_l1_checked_columns`.
-- **#5: L2 norm error** — stored as `norm_error_2`.
+- **#5: Relative L2 error of checked columns** — stored as `norm_error_2`.
 
 ## 4. Hardware Requirements
 
@@ -192,7 +192,7 @@ Expected ranges and gates live in `config/benchmark_config.yaml` under `baseline
 Create cannot finish without `scripts/collect_workload.py`.
 
 **`self_check` overlay rewritten**
-Do not overwrite files listed in `results/overlay_lock.json`.
+`Locked overlay rewritten` means the sibling file and the `sha256` in `results/overlay_lock.json` disagree. The repair is to make `implementation_components/<component-id>/files/<path>`, the sibling path, and that digest the same bytes, then recheck with `create_one_workload.py --validate-only`. Do not replace the overlay with a new collector, and do not regenerate a non-empty sibling.
 
 **Remote SSH drop during setup**
 Reconnect and resume `bash setup.sh --assume-yes`. Do not wipe `.venv` or `.cache`.

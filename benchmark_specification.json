@@ -37,7 +37,7 @@
   {
     "field_name": "Metrics",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "#1: Achieved compute throughput, TFLOP/s (achieved_compute_tflops); #2: Kernel execution time (kernel_time_msec); #3: Minimum operand traffic, GB/s (minimum_operand_traffic_gb_s); #4: Relative L1 of checked columns (relative_l1_checked_columns); #5: L2 norm error (norm_error_2)"
+    "value": "#1: Achieved compute throughput, TFLOP/s (achieved_compute_tflops); #2: Kernel execution time (kernel_time_msec); #3: Minimum operand traffic, GB/s (minimum_operand_traffic_gb_s); #4: Relative L1 of checked columns (relative_l1_checked_columns); #5: Relative L2 error of checked columns (norm_error_2)"
   },
   {
     "field_name": "Command Tools Executed",

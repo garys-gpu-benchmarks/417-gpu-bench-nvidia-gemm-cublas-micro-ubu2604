@@ -48,7 +48,7 @@ gemm,ok,gemm,f16,4096,4096,4096,N,N,1,0,4096,4096,4096,1,5,20,1,80,0.5,2000,1e-3
 - **#2: Kernel execution time** — stored as `kernel_time_msec`.
 - **#3: Minimum operand traffic, GB/s** — stored as `minimum_operand_traffic_gb_s`.
 - **#4: Relative L1 of checked columns** — stored as `relative_l1_checked_columns`.
-- **#5: L2 norm error** — stored as `norm_error_2`.
+- **#5: Relative L2 error of checked columns** — stored as `norm_error_2`.
 
 ## Framework
 
