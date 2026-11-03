@@ -2,13 +2,12 @@
 
 ## Execution Description
 
-Builds src/cublas_gemm.cu into bin/cublas_gemm and times C = alphaAB + betaC via cuBLAS. function, dtype (default f32_r), M/N/K, transposeA/B, alpha/beta, lda/ldb/ldc, batch_count, warmup_iters, num_iterations, and norm_check come from yaml. Collector runs the harness twice and writes pass1, pass2, and summary CSV rows. This is not cublas-bench Sweep dimensions: function, dtype, M, N, K, transposeA, transposeB, alpha.
+Builds src/cublas_gemm.cu into bin/cublas_gemm and times C = alphaAB + betaC via cuBLAS. function, dtype (default f32_r), M/N/K, transposeA/B, alpha/beta, lda/ldb/ldc, batch_count, warmup_iters, num_iterations, and norm_check come from yaml. Collector runs the harness twice and writes pass1, pass2, and summary CSV rows. This is not cublas-bench Sweep dimensions: dtype, M, N, K, transposeA, transposeB, alpha, beta.
 
 ## Parameters
 
 | Parameter | CLI Flag | Tested Values | Default | Description |
 | --- | --- | --- | --- | --- |
-| function | `--function` | smoke=true, baseline=true, extended=true | true | From Parameter list; see Execution Description With Parameters. |
 | dtype | `--dtype` | smoke=f32_r, baseline=f32_r, extended=f32_r | f32_r | From Parameter list; see Execution Description With Parameters. |
 | M | `--m` | smoke=64, baseline=4096, extended=4096 | 4096 | From Parameter list; see Execution Description With Parameters. |
 | N | `--n` | smoke=64, baseline=4096, extended=4096 | 4096 | From Parameter list; see Execution Description With Parameters. |
@@ -24,10 +23,11 @@ Builds src/cublas_gemm.cu into bin/cublas_gemm and times C = alphaAB + betaC via
 | warmup_iters | `--warmup-iters` | smoke=2, baseline=5, extended=10 | 5 | From Parameter list; see Execution Description With Parameters. |
 | num_iterations | `--num-iterations` | smoke=2, baseline=30000, extended=84000 | 30000 | From Parameter list; see Execution Description With Parameters. |
 | norm_check | `--norm-check` | smoke=1, baseline=1, extended=1 | 1 | From Parameter list; see Execution Description With Parameters. |
+| function | `--function` | smoke=true, baseline=true, extended=true | true | From Parameter list; see Execution Description With Parameters. |
 
 ### Derived quantities
 
-Matrix extents come from the Parameters table. Example: use the tested value of `function` from Profile Parameter Values. Do not invent a leading dimension that the spec does not state.
+Matrix extents come from the Parameters table. Example: use the tested value of `dtype` from Profile Parameter Values. Do not invent a leading dimension that the spec does not state.
 
 ## Invocation
 

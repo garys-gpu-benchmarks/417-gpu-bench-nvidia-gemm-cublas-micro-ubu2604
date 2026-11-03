@@ -102,17 +102,17 @@
   {
     "field_name": "run_benchmark Command Plus Options for Smoke Run",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "bash run_benchmark.sh --smoke --validate --function true --dtype f32_r --M 64 --N 64 --K 64 --transposeA N --transposeB N --alpha 1 --beta 0 --lda 64 --ldb 64 --ldc 64 --batch-count 1 --warmup-iters 2 --num-iterations 2 --norm-check 1"
+    "value": "bash run_benchmark.sh --smoke --validate --dtype f32_r --M 64 --N 64 --K 64 --transposeA N --transposeB N --alpha 1 --beta 0 --lda 64 --ldb 64 --ldc 64 --batch-count 1 --warmup-iters 2 --num-iterations 2 --norm-check 1 --function true"
   },
   {
     "field_name": "run_benchmark Command Plus Options for Baseline Run",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "bash run_benchmark.sh --baseline --validate --function true --dtype f32_r --M 4096 --N 4096 --K 4096 --transposeA N --transposeB N --alpha 1 --beta 0 --lda 4096 --ldb 4096 --ldc 4096 --batch-count 1 --warmup-iters 5 --num-iterations 30000 --norm-check 1"
+    "value": "bash run_benchmark.sh --baseline --validate --dtype f32_r --M 4096 --N 4096 --K 4096 --transposeA N --transposeB N --alpha 1 --beta 0 --lda 4096 --ldb 4096 --ldc 4096 --batch-count 1 --warmup-iters 5 --num-iterations 30000 --norm-check 1 --function true"
   },
   {
     "field_name": "run_benchmark Command Plus Options for Extended Run",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "bash run_benchmark.sh --extended --validate --function true --dtype f32_r --M 4096 --N 4096 --K 4096 --transposeA N --transposeB N --alpha 1 --beta 0 --lda 4096 --ldb 4096 --ldc 4096 --batch-count 1 --warmup-iters 10 --num-iterations 84000 --norm-check 1"
+    "value": "bash run_benchmark.sh --extended --validate --dtype f32_r --M 4096 --N 4096 --K 4096 --transposeA N --transposeB N --alpha 1 --beta 0 --lda 4096 --ldb 4096 --ldc 4096 --batch-count 1 --warmup-iters 10 --num-iterations 84000 --norm-check 1 --function true"
   },
   {
     "field_name": "Output Fields / Metrics to Parse",
@@ -227,82 +227,82 @@
   {
     "field_name": "Parameter_01",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "function"
+    "value": "dtype"
   },
   {
     "field_name": "Parameter_02",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "dtype"
+    "value": "M"
   },
   {
     "field_name": "Parameter_03",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "M"
+    "value": "N"
   },
   {
     "field_name": "Parameter_04",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "N"
+    "value": "K"
   },
   {
     "field_name": "Parameter_05",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "K"
+    "value": "transposeA"
   },
   {
     "field_name": "Parameter_06",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "transposeA"
+    "value": "transposeB"
   },
   {
     "field_name": "Parameter_07",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "transposeB"
+    "value": "alpha"
   },
   {
     "field_name": "Parameter_08",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "alpha"
+    "value": "beta"
   },
   {
     "field_name": "Parameter_09",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "beta"
+    "value": "lda"
   },
   {
     "field_name": "Parameter_10",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "lda"
+    "value": "ldb"
   },
   {
     "field_name": "Parameter_11",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "ldb"
+    "value": "ldc"
   },
   {
     "field_name": "Parameter_12",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "ldc"
+    "value": "batch_count"
   },
   {
     "field_name": "Parameter_13",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "batch_count"
+    "value": "warmup_iters"
   },
   {
     "field_name": "Parameter_14",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "warmup_iters"
+    "value": "num_iterations"
   },
   {
     "field_name": "Parameter_15",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "num_iterations"
+    "value": "norm_check"
   },
   {
     "field_name": "Parameter_16",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "norm_check"
+    "value": "function"
   },
   {
     "field_name": "Parameter_17",

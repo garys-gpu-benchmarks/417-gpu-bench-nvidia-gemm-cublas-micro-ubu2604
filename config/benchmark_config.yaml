@@ -8,7 +8,6 @@
 # Add thresholds: or baselines: from hardware_profile.mi300x.yaml and Workload Type.
 sweep:
   profile: smoke
-  function: true
   dtype: f32_r
   M:
     smoke: 64
@@ -48,3 +47,4 @@ sweep:
     baseline: 30000
     extended: 84000
   norm_check: 1
+  function: true
