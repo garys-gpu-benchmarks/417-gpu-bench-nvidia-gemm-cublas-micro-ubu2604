@@ -2,7 +2,7 @@
 
 ## Execution Description
 
-Builds src/cublas_gemm.cu into bin/cublas_gemm and times C = alphaAB + betaC via cuBLAS. function, dtype (default f32_r), M/N/K, transposeA/B, alpha/beta, lda/ldb/ldc, batch_count, warmup_iters, num_iterations, and norm_check come from yaml. Collector runs the harness twice and writes pass1, pass2, and summary CSV rows. This is not cublas-bench Sweep dimensions: dtype, M, N, K, transposeA, transposeB, alpha, beta.
+Builds src/cublas_gemm.cu into bin/cublas_gemm and times C = alphaAB + betaC via cuBLAS. dtype (default f32_r), M/N/K, transposeA/B, alpha/beta, lda/ldb/ldc, batch_count, warmup_iters, num_iterations, and norm_check come from yaml. Collector runs the harness twice and writes pass1, pass2, and summary CSV rows. This is not cublas-bench Sweep dimensions: dtype, M, N, K, transposeA, transposeB, alpha, beta.
 
 ## Parameters
 
@@ -23,7 +23,6 @@ Builds src/cublas_gemm.cu into bin/cublas_gemm and times C = alphaAB + betaC via
 | warmup_iters | `--warmup-iters` | smoke=2, baseline=5, extended=10 | 5 | From Parameter list; see Execution Description With Parameters. |
 | num_iterations | `--num-iterations` | smoke=2, baseline=30000, extended=84000 | 30000 | From Parameter list; see Execution Description With Parameters. |
 | norm_check | `--norm-check` | smoke=1, baseline=1, extended=1 | 1 | From Parameter list; see Execution Description With Parameters. |
-| function | `--function` | smoke=true, baseline=true, extended=true | true | From Parameter list; see Execution Description With Parameters. |
 
 ### Derived quantities
 
@@ -52,7 +51,7 @@ gemm,ok,gemm,f16,4096,4096,4096,N,N,1,0,4096,4096,4096,1,5,20,1,80,0.5,2000,1e-3
 
 ## Framework
 
-Builds src/cublas_gemm.cu into bin/cublas_gemm and times C = alphaAB + betaC via cuBLAS. function, dtype (default f32_r), M/N/K, transposeA/B, alpha/beta, lda/ldb/ldc, batch_count, warmup_iters, num_iterations, and norm_check come from yaml. Collector runs the harness twice and writes pass1, pass2, and summary CSV rows.
+Builds src/cublas_gemm.cu into bin/cublas_gemm and times C = alphaAB + betaC via cuBLAS. dtype (default f32_r), M/N/K, transposeA/B, alpha/beta, lda/ldb/ldc, batch_count, warmup_iters, num_iterations, and norm_check come from yaml. Collector runs the harness twice and writes pass1, pass2, and summary CSV rows.
 
 ## Installation and Execution Summary
 
@@ -112,10 +111,10 @@ bash run_benchmark.sh --profile extended --validate
 2. `run.error_message` is NULL.
 3. `started_at` and `finished_at` are valid ISO-8601 UTC strings.
 4. All required aggregate metrics in `runs` are non-NULL and finite.
-5. All required aggregate metrics are physically sensible (positive values). Builds src/cublas_gemm.cu into bin/cublas_gemm and times C = alphaAB + betaC via cuBLAS. function, dtype (default f32_r), M/N/K, transposeA/B, alpha/beta, lda/ldb/ldc, batch_count, warmup_iters, num_iterations, and norm_check come from yaml. Collector runs the harness twice and writes pass1, pass2, and summary CSV rows.
+5. All required aggregate metrics are physically sensible (positive values). Builds src/cublas_gemm.cu into bin/cublas_gemm and times C = alphaAB + betaC via cuBLAS. dtype (default f32_r), M/N/K, transposeA/B, alpha/beta, lda/ldb/ldc, batch_count, warmup_iters, num_iterations, and norm_check come from yaml. Collector runs the harness twice and writes pass1, pass2, and summary CSV rows.
 6. At least 2 sample rows exist for the latest `run_id` (sweep coverage).
 7. No sample has `status = 'error'`.
-8. Builds src/cublas_gemm.cu into bin/cublas_gemm and times C = alphaAB + betaC via cuBLAS. function, dtype (default f32_r), M/N/K, transposeA/B, alpha/beta, lda/ldb/ldc, batch_count, warmup_iters, num_iterations, and norm_check come from yaml. Collector runs the harness twice and writes pass1, pass2, and summary CSV rows.
+8. Builds src/cublas_gemm.cu into bin/cublas_gemm and times C = alphaAB + betaC via cuBLAS. dtype (default f32_r), M/N/K, transposeA/B, alpha/beta, lda/ldb/ldc, batch_count, warmup_iters, num_iterations, and norm_check come from yaml. Collector runs the harness twice and writes pass1, pass2, and summary CSV rows.
 
 ### Baseline / Threshold configuration (`config/benchmark_config.yaml`)
 

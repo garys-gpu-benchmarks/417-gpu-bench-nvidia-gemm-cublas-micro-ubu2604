@@ -25,6 +25,11 @@
     "value": "gpu-bench-nvidia-gemm-cublas-micro-ubu2604"
   },
   {
+    "field_name": "Repo Directory Name",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "417-gpu-bench-nvidia-gemm-cublas-micro-ubu2604"
+  },
+  {
     "field_name": "Main Goal",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "Measure GEMM throughput across dtypes/shapes"
@@ -57,7 +62,7 @@
   {
     "field_name": "Execution Description With Parameters",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Builds src/cublas_gemm.cu into bin/cublas_gemm and times C = alphaAB + betaC via cuBLAS. function, dtype (default f32_r), M/N/K, transposeA/B, alpha/beta, lda/ldb/ldc, batch_count, warmup_iters, num_iterations, and norm_check come from yaml. Collector runs the harness twice and writes pass1, pass2, and summary CSV rows. This is not cublas-bench"
+    "value": "Builds src/cublas_gemm.cu into bin/cublas_gemm and times C = alphaAB + betaC via cuBLAS. dtype (default f32_r), M/N/K, transposeA/B, alpha/beta, lda/ldb/ldc, batch_count, warmup_iters, num_iterations, and norm_check come from yaml. Collector runs the harness twice and writes pass1, pass2, and summary CSV rows. This is not cublas-bench"
   },
   {
     "field_name": "Execution Domain",
@@ -102,17 +107,17 @@
   {
     "field_name": "run_benchmark Command Plus Options for Smoke Run",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "bash run_benchmark.sh --smoke --validate --dtype f32_r --M 64 --N 64 --K 64 --transposeA N --transposeB N --alpha 1 --beta 0 --lda 64 --ldb 64 --ldc 64 --batch-count 1 --warmup-iters 2 --num-iterations 2 --norm-check 1 --function true"
+    "value": "bash run_benchmark.sh --smoke --validate --dtype f32_r --M 64 --N 64 --K 64 --transposeA N --transposeB N --alpha 1 --beta 0 --lda 64 --ldb 64 --ldc 64 --batch-count 1 --warmup-iters 2 --num-iterations 2 --norm-check 1"
   },
   {
     "field_name": "run_benchmark Command Plus Options for Baseline Run",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "bash run_benchmark.sh --baseline --validate --dtype f32_r --M 4096 --N 4096 --K 4096 --transposeA N --transposeB N --alpha 1 --beta 0 --lda 4096 --ldb 4096 --ldc 4096 --batch-count 1 --warmup-iters 5 --num-iterations 30000 --norm-check 1 --function true"
+    "value": "bash run_benchmark.sh --baseline --validate --dtype f32_r --M 4096 --N 4096 --K 4096 --transposeA N --transposeB N --alpha 1 --beta 0 --lda 4096 --ldb 4096 --ldc 4096 --batch-count 1 --warmup-iters 5 --num-iterations 30000 --norm-check 1"
   },
   {
     "field_name": "run_benchmark Command Plus Options for Extended Run",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "bash run_benchmark.sh --extended --validate --dtype f32_r --M 4096 --N 4096 --K 4096 --transposeA N --transposeB N --alpha 1 --beta 0 --lda 4096 --ldb 4096 --ldc 4096 --batch-count 1 --warmup-iters 10 --num-iterations 84000 --norm-check 1 --function true"
+    "value": "bash run_benchmark.sh --extended --validate --dtype f32_r --M 4096 --N 4096 --K 4096 --transposeA N --transposeB N --alpha 1 --beta 0 --lda 4096 --ldb 4096 --ldc 4096 --batch-count 1 --warmup-iters 10 --num-iterations 84000 --norm-check 1"
   },
   {
     "field_name": "Output Fields / Metrics to Parse",
@@ -302,7 +307,7 @@
   {
     "field_name": "Parameter_16",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "function"
+    "value": "-"
   },
   {
     "field_name": "Parameter_17",
@@ -407,7 +412,7 @@
   {
     "field_name": "Profile Parameter Values",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Parameters_SmokeBaselineExtend",
-    "value": "{\"dtype\": {\"smoke\": \"f32_r\", \"baseline\": \"f32_r\", \"extended\": \"f32_r\", \"notes\": \"\"}, \"M\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\", \"notes\": \"\"}, \"N\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\", \"notes\": \"\"}, \"K\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\", \"notes\": \"\"}, \"transposeA\": {\"smoke\": \"N\", \"baseline\": \"N\", \"extended\": \"N\", \"notes\": \"\"}, \"transposeB\": {\"smoke\": \"N\", \"baseline\": \"N\", \"extended\": \"N\", \"notes\": \"\"}, \"alpha\": {\"smoke\": \"1\", \"baseline\": \"1\", \"extended\": \"1\", \"notes\": \"\"}, \"beta\": {\"smoke\": \"0\", \"baseline\": \"0\", \"extended\": \"0\", \"notes\": \"\"}, \"lda\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\", \"notes\": \"\"}, \"ldb\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\", \"notes\": \"\"}, \"ldc\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\", \"notes\": \"\"}, \"batch_count\": {\"smoke\": \"1\", \"baseline\": \"1\", \"extended\": \"1\", \"notes\": \"\"}, \"warmup_iters\": {\"smoke\": \"2\", \"baseline\": \"5\", \"extended\": \"10\", \"notes\": \"Map warmup_iters to rocblas-bench --cold_iters. Never pass -w.\"}, \"num_iterations\": {\"smoke\": \"2\", \"baseline\": \"30000\", \"extended\": \"84000\", \"notes\": \"Ubuntu 26.04 sibling of 217. 00_75 H100 20260905 GEMM iter retune.\"}, \"norm_check\": {\"smoke\": \"1\", \"baseline\": \"1\", \"extended\": \"1\", \"notes\": \"Map norm_check to rocblas-bench -v. Never pass --norm_check.\"}, \"function\": {\"smoke\": \"true\", \"baseline\": \"true\", \"extended\": \"true\", \"notes\": \"\"}}"
+    "value": "{\"dtype\": {\"smoke\": \"f32_r\", \"baseline\": \"f32_r\", \"extended\": \"f32_r\", \"notes\": \"\"}, \"M\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\", \"notes\": \"\"}, \"N\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\", \"notes\": \"\"}, \"K\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\", \"notes\": \"\"}, \"transposeA\": {\"smoke\": \"N\", \"baseline\": \"N\", \"extended\": \"N\", \"notes\": \"\"}, \"transposeB\": {\"smoke\": \"N\", \"baseline\": \"N\", \"extended\": \"N\", \"notes\": \"\"}, \"alpha\": {\"smoke\": \"1\", \"baseline\": \"1\", \"extended\": \"1\", \"notes\": \"\"}, \"beta\": {\"smoke\": \"0\", \"baseline\": \"0\", \"extended\": \"0\", \"notes\": \"\"}, \"lda\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\", \"notes\": \"\"}, \"ldb\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\", \"notes\": \"\"}, \"ldc\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\", \"notes\": \"\"}, \"batch_count\": {\"smoke\": \"1\", \"baseline\": \"1\", \"extended\": \"1\", \"notes\": \"\"}, \"warmup_iters\": {\"smoke\": \"2\", \"baseline\": \"5\", \"extended\": \"10\", \"notes\": \"Map warmup_iters to rocblas-bench --cold_iters. Never pass -w.\"}, \"num_iterations\": {\"smoke\": \"2\", \"baseline\": \"30000\", \"extended\": \"84000\", \"notes\": \"Ubuntu 26.04 sibling of 217. 00_75 H100 20260905 GEMM iter retune.\"}, \"norm_check\": {\"smoke\": \"1\", \"baseline\": \"1\", \"extended\": \"1\", \"notes\": \"Map norm_check to rocblas-bench -v. Never pass --norm_check.\"}}"
   },
   {
     "field_name": "Profile Command Authorship",

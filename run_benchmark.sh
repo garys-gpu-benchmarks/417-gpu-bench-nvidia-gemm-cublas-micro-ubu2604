@@ -60,7 +60,6 @@ Workload options:
   --warmup-iters <value>            Override warmup_iters
   --num-iterations <value>            Override num_iterations
   --norm-check <value>            Override norm_check
-  --function <value>            Override function
 
 Information:
   --specification               Print this workload's specification and exit
@@ -109,7 +108,6 @@ BATCH_COUNT=""
 WARMUP_ITERS=""
 NUM_ITERATIONS=""
 NORM_CHECK=""
-FUNCTION=""
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -145,7 +143,6 @@ while [[ $# -gt 0 ]]; do
     --warmup-iters) WARMUP_ITERS="${2:-}"; shift 2 ;;
     --num-iterations) NUM_ITERATIONS="${2:-}"; shift 2 ;;
     --norm-check) NORM_CHECK="${2:-}"; shift 2 ;;
-    --function) FUNCTION="${2:-}"; shift 2 ;;
     --help|--specification|--matrix-definition) shift ;;
     *) die "Unknown option: $1" ;;
   esac
@@ -199,7 +196,6 @@ BATCH_COUNT="${BATCH_COUNT:-$(yaml_get batch_count)}"
 WARMUP_ITERS="${WARMUP_ITERS:-$(yaml_get warmup_iters)}"
 NUM_ITERATIONS="${NUM_ITERATIONS:-$(yaml_get num_iterations)}"
 NORM_CHECK="${NORM_CHECK:-$(yaml_get norm_check)}"
-FUNCTION="${FUNCTION:-$(yaml_get function)}"
 OUTPUT_FORMAT="${OUTPUT_FORMAT:-$(yaml_get output_format)}"
 OUTPUT_FORMAT="${OUTPUT_FORMAT:-csv}"
 
@@ -220,7 +216,6 @@ BENCHMARK_RUN_COMMAND="bash run_benchmark.sh --${PROFILE}"
 [[ -n "${WARMUP_ITERS}" ]] && BENCHMARK_RUN_COMMAND+=" --warmup-iters $(printf %q "${WARMUP_ITERS}")"
 [[ -n "${NUM_ITERATIONS}" ]] && BENCHMARK_RUN_COMMAND+=" --num-iterations $(printf %q "${NUM_ITERATIONS}")"
 [[ -n "${NORM_CHECK}" ]] && BENCHMARK_RUN_COMMAND+=" --norm-check $(printf %q "${NORM_CHECK}")"
-[[ -n "${FUNCTION}" ]] && BENCHMARK_RUN_COMMAND+=" --function $(printf %q "${FUNCTION}")"
 set_benchmark_run_command "${BENCHMARK_RUN_COMMAND}"
 
 HOSTNAME_VALUE="$(hostname -s 2>/dev/null || hostname)"
@@ -278,7 +273,6 @@ run_collection() {
   grep -q -- '--warmup-iters' <<<"${help}" && collect_args+=(--warmup-iters "${WARMUP_ITERS}")
   grep -q -- '--num-iterations' <<<"${help}" && collect_args+=(--num-iterations "${NUM_ITERATIONS}")
   grep -q -- '--norm-check' <<<"${help}" && collect_args+=(--norm-check "${NORM_CHECK}")
-  grep -q -- '--function' <<<"${help}" && collect_args+=(--function "${FUNCTION}")
 
   printf -v collect_cmd '%q ' "${PYTHON_BIN}" scripts/collect_workload.py "${collect_args[@]}"
   echo "[RUN] ${collect_cmd}"

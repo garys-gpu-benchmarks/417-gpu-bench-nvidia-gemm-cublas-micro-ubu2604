@@ -47,4 +47,3 @@ sweep:
     baseline: 30000
     extended: 84000
   norm_check: 1
-  function: true
