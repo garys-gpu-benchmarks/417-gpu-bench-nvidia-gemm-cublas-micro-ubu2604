@@ -99,9 +99,9 @@ gemm,ok,gemm,f16,4096,4096,4096,N,N,1,0,4096,4096,4096,1,5,20,1,80,0.5,2000,1e-3
 
 ```bash
 bash run_benchmark.sh --help
-bash run_benchmark.sh --profile smoke --validate
-bash run_benchmark.sh --profile baseline --validate
-bash run_benchmark.sh --profile extended --validate
+bash run_benchmark.sh --smoke --validate
+bash run_benchmark.sh --baseline --validate
+bash run_benchmark.sh --extended --validate
 ```
 `run_benchmark.sh --help` prints usage and exits. The harness calls `scripts/ensure_setup.sh` when `.setup_state` is absent.
 
