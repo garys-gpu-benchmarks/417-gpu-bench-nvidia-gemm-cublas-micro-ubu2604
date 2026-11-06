@@ -140,6 +140,16 @@
     "value": "-"
   },
   {
+    "field_name": "Validation Objective",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "Validates cuBLAS GEMM TFLOPS, kernel time, bandwidth, and optional norm errors from bin/cublas_gemm"
+  },
+  {
+    "field_name": "Command Tools Executed",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "Compile cublas_gemm.cu with nvcc; run bin/cublas_gemm twice via collect_cublas_gemm.py"
+  },
+  {
     "field_name": "run_benchmark Command Plus Options for Smoke Run (One minute or less)",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "bash run_benchmark.sh --smoke --validate --dtype f32_r --M 64 --N 64 --K 64 --transposeA N --transposeB N --alpha 1 --beta 0 --lda 64 --ldb 64 --ldc 64 --batch-count 1 --warmup-iters 2 --num-iterations 2 --norm-check 1"
@@ -153,16 +163,6 @@
     "field_name": "run_benchmark Command Plus Options for Extended Run (8 to 15 minutes)",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "bash run_benchmark.sh --extended --validate --dtype f32_r --M 4096 --N 4096 --K 4096 --transposeA N --transposeB N --alpha 1 --beta 0 --lda 4096 --ldb 4096 --ldc 4096 --batch-count 1 --warmup-iters 10 --num-iterations 84000 --norm-check 1"
-  },
-  {
-    "field_name": "Validation Objective",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Validates cuBLAS GEMM TFLOPS, kernel time, bandwidth, and optional norm errors from bin/cublas_gemm"
-  },
-  {
-    "field_name": "Command Tools Executed",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Compile cublas_gemm.cu with nvcc; run bin/cublas_gemm twice via collect_cublas_gemm.py"
   },
   {
     "field_name": "Command Execution Details and Purpose",
@@ -412,7 +412,7 @@
   {
     "field_name": "Profile Parameter Values",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Parameters_SmokeBaselineExtend",
-    "value": "{\"dtype\": {\"smoke\": \"f32_r\", \"baseline\": \"f32_r\", \"extended\": \"f32_r\", \"notes\": \"\"}, \"M\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\", \"notes\": \"\"}, \"N\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\", \"notes\": \"\"}, \"K\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\", \"notes\": \"\"}, \"transposeA\": {\"smoke\": \"N\", \"baseline\": \"N\", \"extended\": \"N\", \"notes\": \"\"}, \"transposeB\": {\"smoke\": \"N\", \"baseline\": \"N\", \"extended\": \"N\", \"notes\": \"\"}, \"alpha\": {\"smoke\": \"1\", \"baseline\": \"1\", \"extended\": \"1\", \"notes\": \"\"}, \"beta\": {\"smoke\": \"0\", \"baseline\": \"0\", \"extended\": \"0\", \"notes\": \"\"}, \"lda\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\", \"notes\": \"\"}, \"ldb\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\", \"notes\": \"\"}, \"ldc\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\", \"notes\": \"\"}, \"batch_count\": {\"smoke\": \"1\", \"baseline\": \"1\", \"extended\": \"1\", \"notes\": \"\"}, \"warmup_iters\": {\"smoke\": \"2\", \"baseline\": \"5\", \"extended\": \"10\", \"notes\": \"Map warmup_iters to rocblas-bench --cold_iters. Never pass -w.\"}, \"num_iterations\": {\"smoke\": \"2\", \"baseline\": \"30000\", \"extended\": \"84000\", \"notes\": \"Ubuntu 26.04 sibling of 217. 00_75 H100 20260905 GEMM iter retune.\"}, \"norm_check\": {\"smoke\": \"1\", \"baseline\": \"1\", \"extended\": \"1\", \"notes\": \"Map norm_check to rocblas-bench -v. Never pass --norm_check.\"}}"
+    "value": "{\"dtype\": {\"smoke\": \"f32_r\", \"baseline\": \"f32_r\", \"extended\": \"f32_r\"}, \"M\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\"}, \"N\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\"}, \"K\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\"}, \"transposeA\": {\"smoke\": \"N\", \"baseline\": \"N\", \"extended\": \"N\"}, \"transposeB\": {\"smoke\": \"N\", \"baseline\": \"N\", \"extended\": \"N\"}, \"alpha\": {\"smoke\": \"1\", \"baseline\": \"1\", \"extended\": \"1\"}, \"beta\": {\"smoke\": \"0\", \"baseline\": \"0\", \"extended\": \"0\"}, \"lda\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\"}, \"ldb\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\"}, \"ldc\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\"}, \"batch_count\": {\"smoke\": \"1\", \"baseline\": \"1\", \"extended\": \"1\"}, \"warmup_iters\": {\"smoke\": \"2\", \"baseline\": \"5\", \"extended\": \"10\"}, \"num_iterations\": {\"smoke\": \"2\", \"baseline\": \"30000\", \"extended\": \"84000\"}, \"norm_check\": {\"smoke\": \"1\", \"baseline\": \"1\", \"extended\": \"1\"}}"
   },
   {
     "field_name": "Profile Command Authorship",
