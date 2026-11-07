@@ -30,7 +30,8 @@ Profiles (default: --smoke):
   --extended                    Run extended profile
 
 Parameters (override the profile's value):
-  --dtype <value>               Tensor, element, or storage data type (smoke/baseline/extended: f32_r)
+  --dtype <value>               Tensor, element, or storage data type
+                                  all profiles: f32_r
   --M <n>                       GEMM M matrix dimension (smoke 64, baseline 4096, extended 4096)
   --N <n>                       GEMM N matrix dimension (smoke 64, baseline 4096, extended 4096)
   --K <n>                       GEMM K matrix dimension (smoke 64, baseline 4096, extended 4096)
@@ -42,8 +43,14 @@ Parameters (override the profile's value):
   --ldb <value>                 Shared workload parameter (smoke 64, baseline 4096, extended 4096)
   --ldc <value>                 Shared workload parameter (smoke 64, baseline 4096, extended 4096)
   --batch-count <value>         Shared workload parameter (smoke/baseline/extended: 1)
-  --warmup-iters <n>            Untimed warm-up repetitions before measurement (smoke 2, baseline 5, extended 10)
-  --num-iterations <n>          Number of timed repetitions (smoke 2, baseline 30000, extended 84000)
+  --warmup-iters <n>            Untimed warm-up repetitions before measurement
+                                  smoke:    2
+                                  baseline: 5
+                                  extended: 10
+  --num-iterations <n>          Number of timed repetitions
+                                  smoke:    2
+                                  baseline: 30000
+                                  extended: 84000
   --norm-check <value>          Shared workload parameter (smoke/baseline/extended: 1)
 
 General options:
