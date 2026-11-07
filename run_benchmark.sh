@@ -16,12 +16,11 @@ capture_benchmark_run_command_submitted "$@"
 
 usage() {
   cat <<'USAGE'
+
 Usage: bash run_benchmark.sh [OPTIONS]
 
 Workload Name:          GEMM / cuBLAS Microbenchmark.
 Main Goal:              Measure GEMM throughput across dtypes/shapes.
-Validation Objective:   Validates cuBLAS GEMM TFLOPS, kernel time, bandwidth, and optional norm
-                        errors from bin/cublas_gemm.
 Command Tools Executed: Compile cublas_gemm.cu with nvcc; run bin/cublas_gemm twice via
                         collect_cublas_gemm.py.
 

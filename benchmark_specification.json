@@ -35,6 +35,11 @@
     "value": "Measure GEMM throughput across dtypes/shapes"
   },
   {
+    "field_name": "Command Tools Executed",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "Compile cublas_gemm.cu with nvcc; run bin/cublas_gemm twice via collect_cublas_gemm.py"
+  },
+  {
     "field_name": "Metrics",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "#1: Achieved compute throughput, TFLOP/s (achieved_compute_tflops); #2: Kernel execution time (kernel_time_msec); #3: Minimum operand traffic, GB/s (minimum_operand_traffic_gb_s); #4: Relative L1 of checked columns (relative_l1_checked_columns); #5: Relative L2 error of checked columns (norm_error_2)"
@@ -140,16 +145,6 @@
     "value": "-"
   },
   {
-    "field_name": "Validation Objective",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Validates cuBLAS GEMM TFLOPS, kernel time, bandwidth, and optional norm errors from bin/cublas_gemm"
-  },
-  {
-    "field_name": "Command Tools Executed",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Compile cublas_gemm.cu with nvcc; run bin/cublas_gemm twice via collect_cublas_gemm.py"
-  },
-  {
     "field_name": "run_benchmark Command Plus Options for Smoke Run (One minute or less)",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "bash run_benchmark.sh --smoke --validate --dtype f32_r --M 64 --N 64 --K 64 --transposeA N --transposeB N --alpha 1 --beta 0 --lda 64 --ldb 64 --ldc 64 --batch-count 1 --warmup-iters 2 --num-iterations 2 --norm-check 1"
@@ -163,6 +158,11 @@
     "field_name": "run_benchmark Command Plus Options for Extended Run (8 to 15 minutes)",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "bash run_benchmark.sh --extended --validate --dtype f32_r --M 4096 --N 4096 --K 4096 --transposeA N --transposeB N --alpha 1 --beta 0 --lda 4096 --ldb 4096 --ldc 4096 --batch-count 1 --warmup-iters 10 --num-iterations 84000 --norm-check 1"
+  },
+  {
+    "field_name": "Validation Objective",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "Validates cuBLAS GEMM TFLOPS, kernel time, bandwidth, and optional norm errors from bin/cublas_gemm"
   },
   {
     "field_name": "Command Execution Details and Purpose",
