@@ -19,10 +19,10 @@ usage() {
 
 Usage: bash run_benchmark.sh [OPTIONS]
 
-Workload Name:          GEMM / cuBLAS Microbenchmark.
-Main Goal:              Measure GEMM throughput across dtypes/shapes.
+Workload Name:          GEMM / cuBLAS Microbenchmark
+Main Goal:              Measure GEMM throughput across dtypes/shapes
 Command Tools Executed: Compile cublas_gemm.cu with nvcc; run bin/cublas_gemm twice via
-                        collect_cublas_gemm.py.
+                        collect_cublas_gemm.py
 
 Profiles (default: --smoke):
   --smoke                       Run smoke profile
