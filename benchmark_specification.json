@@ -40,6 +40,11 @@
     "value": "Compile cublas_gemm.cu with nvcc; run bin/cublas_gemm twice via collect_cublas_gemm.py"
   },
   {
+    "field_name": "Execution Description With Parameters",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "Builds src/cublas_gemm.cu into bin/cublas_gemm and times C = alphaAB + betaC via cuBLAS. dtype (default f32_r), M/N/K, transposeA/B, alpha/beta, lda/ldb/ldc, batch_count, warmup_iters, num_iterations, and norm_check come from yaml. Collector runs the harness twice and writes pass1, pass2, and summary CSV rows. This is not cublas-bench"
+  },
+  {
     "field_name": "Metrics",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "#1: Achieved compute throughput, TFLOP/s (achieved_compute_tflops); #2: Kernel execution time (kernel_time_msec); #3: Minimum operand traffic, GB/s (minimum_operand_traffic_gb_s); #4: Relative L1 of checked columns (relative_l1_checked_columns); #5: Relative L2 error of checked columns (norm_error_2)"
@@ -173,11 +178,6 @@
     "field_name": "Command Methodology",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "Compile src/cublas_gemm.cu with nvcc and run bin/cublas_gemm twice with CUDA-event timing and an optional norm check, then average the two passes into TFLOPS, kernel time, bandwidth, and norm error. This is not the cublas-bench CLI"
-  },
-  {
-    "field_name": "Execution Description With Parameters",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Builds src/cublas_gemm.cu into bin/cublas_gemm and times C = alphaAB + betaC via cuBLAS. dtype (default f32_r), M/N/K, transposeA/B, alpha/beta, lda/ldb/ldc, batch_count, warmup_iters, num_iterations, and norm_check come from yaml. Collector runs the harness twice and writes pass1, pass2, and summary CSV rows. This is not cublas-bench"
   },
   {
     "field_name": "Execution Domain",
